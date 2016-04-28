@@ -10,6 +10,6 @@
  - picture (weakreference, picker[type='image']) internationalized < 'jnt:file'
 
 [blueimpnt:carouselVideoItem] > jnt:content, mix:title
- - videoMP4 (weakreference, picker[type='image']) internationalized < 'jnt:file'
+ - videoMP4 (weakreference, picker[type='video']) internationalized < 'jnt:file'
  - videoOgg (weakreference, picker[type='video']) internationalized < 'jnt:file'
  - videoWebM (weakreference, picker[type='video']) internationalized < 'jnt:file'
