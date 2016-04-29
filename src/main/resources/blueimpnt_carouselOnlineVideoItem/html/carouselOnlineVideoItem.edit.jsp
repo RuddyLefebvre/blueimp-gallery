@@ -18,3 +18,4 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
+<fmt:message key="blueimpnt_carouselOnlineVideoItem.origin.${currentNode.properties.origin.string}"/> - ${currentNode.displayableName}
