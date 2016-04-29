@@ -6,6 +6,14 @@
 [blueimpmix:structuredContent] > jmix:droppableContent mixin
 
 [blueimpnt:carousel] > jnt:contentList, blueimpmix:structuredContent
+ - displayTitle (boolean)
+ + * (blueimpnt:carouselImageItem)
+ + * (blueimpnt:carouselVideoItem)
+ + * (blueimpnt:carouselOnlineVideoItem)
+ + * (blueimpnt:carouselImageFromFolder)
+
+[blueimpnt:lightBox] > jnt:contentList, blueimpmix:structuredContent
+ - displayTitle (boolean)
  + * (blueimpnt:carouselImageItem)
  + * (blueimpnt:carouselVideoItem)
  + * (blueimpnt:carouselOnlineVideoItem)

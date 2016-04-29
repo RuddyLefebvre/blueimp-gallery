@@ -1,0 +1,18 @@
+.blueimp-gallery-links {
+    text-align: center;
+}
+
+.blueimp-gallery-links img {
+    border: 0;
+    vertical-align: middle;
+    max-width: 75px;
+    max-height: 75px;
+    width: auto;
+    height: auto;
+}
+
+.blueimp-gallery-links a {
+    font-size: 0;
+    color: orange;
+    text-decoration: none;
+}

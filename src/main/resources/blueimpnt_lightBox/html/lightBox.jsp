@@ -20,6 +20,7 @@
 <template:addResources type="css" resources="blueimp-gallery/blueimp-gallery.css"/>
 <template:addResources type="css" resources="blueimp-gallery/blueimp-gallery-indicator.css"/>
 <template:addResources type="css" resources="blueimp-gallery/blueimp-gallery-video.css"/>
+<template:addResources type="css" resources="blueimp-custom.css"/>
 <template:addResources type="javascript" resources="blueimp-gallery/blueimp-helper.js"/>
 <template:addResources type="javascript" resources="blueimp-gallery/blueimp-gallery.js"/>
 <template:addResources type="javascript" resources="blueimp-gallery/blueimp-gallery-fullscreen.js"/>
@@ -32,14 +33,16 @@
 <template:addResources>
     <script>
         $(document).ready(function() {
-            setTimeout(function(){
-                blueimp.Gallery(document.getElementById('links_${currentNode.identifier}').getElementsByTagName('a'),
-                        {
-                            container: '#blueimp-gallery-carousel_${currentNode.identifier}',
-                            carousel: true
-                        }
-                );
-            }, 1);
+            $('body').append($('#blueimp-gallery_${currentNode.identifier}'));
+
+            document.getElementById('links_${currentNode.identifier}').onclick = function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement,
+                    link = target.src ? target.parentNode : target,
+                    options = {index: link, event: event, container: document.getElementById('blueimp-gallery_${currentNode.identifier}')},
+                    links = this.getElementsByTagName('a');
+                blueimp.Gallery(links, options);
+            }
         });
     </script>
 </template:addResources>
@@ -49,19 +52,20 @@
     <template:include view="edit"/>
 </c:if>
 
-<div id="blueimp-gallery-carousel_${currentNode.identifier}" class="blueimp-gallery blueimp-gallery-carousel">
+<div id="blueimp-gallery_${currentNode.identifier}" class="blueimp-gallery blueimp-gallery-controls">
     <div class="slides"></div>
     <c:if test="${currentNode.properties.displayTitle.boolean}">
         <h3 class="title"></h3>
     </c:if>
     <a class="prev">‹</a>
     <a class="next">›</a>
+    <a class="close">×</a>
     <a class="play-pause"></a>
     <ol class="indicator"></ol>
 </div>
 
 <c:set var="blueimpCarouselChildren" value="${jcr:getChildrenOfType(currentNode, 'blueimpnt:carouselImageItem,blueimpnt:carouselVideoItem,blueimpnt:carouselOnlineVideoItem,blueimpnt:carouselImageFromFolder')}"/>
-<div id="links_${currentNode.identifier}" style="display: none;">
+<div id="links_${currentNode.identifier}" class="blueimp-gallery-links">
     <c:forEach items="${blueimpCarouselChildren}" var="child" varStatus="status">
         <template:module node="${child}" editable="true"/>
     </c:forEach>
