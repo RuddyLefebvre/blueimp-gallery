@@ -9,6 +9,7 @@
  + * (blueimpnt:carouselImageItem)
  + * (blueimpnt:carouselVideoItem)
  + * (blueimpnt:carouselOnlineVideoItem)
+ + * (blueimpnt:carouselImageFromFolder)
 
 [blueimpnt:carouselImageItem] > jnt:content, mix:title
  - picture (weakreference, picker[type='image']) mandatory internationalized < 'jnt:file'
@@ -20,3 +21,6 @@
 [blueimpnt:carouselOnlineVideoItem] > jnt:content, mix:title
  - origin (string, choicelist[resourceBundle]) = 'youtube' < 'youtube', 'vimeo'
  - videoId (string) mandatory internationalized
+
+[blueimpnt:carouselImageFromFolder] > jnt:content
+ - source (weakreference, picker[type='folder']) mandatory internationalized < 'jnt:folder'
