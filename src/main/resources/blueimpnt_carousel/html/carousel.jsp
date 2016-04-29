@@ -58,7 +58,7 @@
     <ol class="indicator"></ol>
 </div>
 
-<c:set var="blueimpCarouselChildren" value="${jcr:getChildrenOfType(currentNode, 'blueimpnt:carouselImageItem,blueimpnt:carouselVideoItem')}"/>
+<c:set var="blueimpCarouselChildren" value="${jcr:getChildrenOfType(currentNode, 'blueimpnt:carouselImageItem,blueimpnt:carouselVideoItem,blueimpnt:carouselOnlineVideoItem')}"/>
 <div id="links_${currentNode.identifier}" style="display: none;">
     <c:forEach items="${blueimpCarouselChildren}" var="child" varStatus="status">
         <template:module node="${child}" editable="true"/>

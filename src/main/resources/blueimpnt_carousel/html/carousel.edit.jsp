@@ -20,7 +20,7 @@
 <template:include view="hidden.header"/>
 
 <fmt:message key="blueimpnt_carousel.edit.addCarouselContent"/>
-<template:module path="*" nodeTypes="blueimpnt:carouselImageItem blueimpnt:carouselVideoItem"/>
+<template:module path="*" nodeTypes="blueimpnt:carouselImageItem blueimpnt:carouselVideoItem blueimpnt:carouselOnlineVideoItem"/>
 
 <c:if test="${not empty moduleMap.currentList}">
     <template:addResources>
