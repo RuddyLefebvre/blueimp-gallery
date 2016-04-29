@@ -18,27 +18,7 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
-<c:set var="videoNode" value="${currentNode.properties.source.node}"/>
-<jcr:node path="${videoNode.path}/jcr:content" var="contentNode" />
-<c:set var="mainType" value="${fn:replace(contentNode.properties['jcr:mimeType'].string, 'application', 'video')}"/>
-<c:url var="videoUrl" value="${videoNode.url}" context="/"/>
-<c:set var="dataSources" value="["/>
-<c:set var="dataSources">${dataSources}{"href":"${videoUrl}", "type":"${mainType}"}</c:set>
-<c:set var="dataSources">${dataSources}]</c:set>
-
-<c:set var="posterUrl"/>
 <c:if test="${not empty currentNode.properties.poster}">
-    <c:url value="${currentNode.properties.poster.node.url}" context="/" var="posterUrl"/>
+    <img src="<c:url value='${currentNode.properties.poster.node.thumbnailUrls.thumbnail}' context='/'/>" alt="${currentNode.displayableName}">
 </c:if>
-
-<a href="${videoUrl}" title="${currentNode.displayableName}" type="${mainType}"
-   data-poster="${posterUrl}" data-sources="${fn:escapeXml(dataSources)}">
-    <c:choose>
-        <c:when test="${not empty currentNode.properties.poster}">
-            <img src="${posterUrl}" alt="${currentNode.displayableName}">
-        </c:when>
-        <c:otherwise>
-            ${currentNode.displayableName}
-        </c:otherwise>
-    </c:choose>
-</a>
+${currentNode.displayableName}

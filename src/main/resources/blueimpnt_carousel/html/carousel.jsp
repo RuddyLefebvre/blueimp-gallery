@@ -17,32 +17,39 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-<template:addResources type="css" resources="blueimp-gallery.min.css"/>
-<template:addResources type="javascript" resources="blueimp-gallery.min.js"/>
-<template:addResources type="javascript" resources="jquery.min.js"/>
+<template:addResources type="css" resources="blueimp-gallery/blueimp-gallery.css"/>
+<template:addResources type="css" resources="blueimp-gallery/blueimp-gallery-indicator.css"/>
+<template:addResources type="css" resources="blueimp-gallery/blueimp-gallery-video.css"/>
+<template:addResources type="javascript" resources="blueimp-gallery/blueimp-helper.js"/>
+<template:addResources type="javascript" resources="blueimp-gallery/blueimp-gallery.js"/>
+<template:addResources type="javascript" resources="blueimp-gallery/blueimp-gallery-fullscreen.js"/>
+<template:addResources type="javascript" resources="blueimp-gallery/blueimp-gallery-indicator.js"/>
+<template:addResources type="javascript" resources="blueimp-gallery/blueimp-gallery-video.js"/>
+<template:addResources type="javascript" resources="blueimp-gallery/blueimp-gallery-vimeo.js"/>
+<template:addResources type="javascript" resources="blueimp-gallery/blueimp-gallery-youtube.js"/>
+<template:addResources type="javascript" resources="blueimp-gallery/jquery.blueimp-gallery.js"/>
+
 <template:addResources>
     <script>
         $(document).ready(function() {
-            <%--document.getElementById('links_${currentNode.identifier}').onclick = function (event) {--%>
-                <%--event = event || window.event;--%>
-                <%--var target = event.target || event.srcElement,--%>
-                        <%--link = target.src ? target.parentNode : target,--%>
-                        <%--options = {index: link, event: event},--%>
-                        <%--links = this.getElementsByTagName('a');--%>
-                <%--blueimp.Gallery(links, options);--%>
-            <%--};--%>
-
-            blueimp.Gallery(document.getElementById('links').getElementsByTagName('a'),
-                {
-                    container: '#blueimp-gallery-carousel_${currentNode.identifier}',
-                    carousel: true
-                }
-            );
+            setTimeout(function(){
+                blueimp.Gallery(document.getElementById('links_${currentNode.identifier}').getElementsByTagName('a'),
+                        {
+                            container: '#blueimp-gallery-carousel_${currentNode.identifier}',
+                            carousel: true
+                        }
+                );
+            }, 1);
         });
     </script>
 </template:addResources>
 
-<div id="blueimp-gallery-carousel_${currentNode.identifier}" class="blueimp-gallery blueimp-gallery-controls blueimp-gallery-carousel">
+
+<c:if test="${(renderContext.editMode and not fn:startsWith(currentNode.path, '/modules')) or fn:contains(renderContext.editModeConfigName, 'studio')}">
+    <template:include view="edit"/>
+</c:if>
+
+<div id="blueimp-gallery-carousel_${currentNode.identifier}" class="blueimp-gallery blueimp-gallery-carousel">
     <div class="slides"></div>
     <h3 class="title"></h3>
     <a class="prev">‹</a>
@@ -52,12 +59,8 @@
 </div>
 
 <c:set var="blueimpCarouselChildren" value="${jcr:getChildrenOfType(currentNode, 'blueimpnt:carouselImageItem,blueimpnt:carouselVideoItem')}"/>
-<div id="links_${currentNode.identifier}">
+<div id="links_${currentNode.identifier}" style="display: none;">
     <c:forEach items="${blueimpCarouselChildren}" var="child" varStatus="status">
         <template:module node="${child}" editable="true"/>
     </c:forEach>
 </div>
-
-<c:if test="${renderContext.editMode}">
-    <template:module path="*" nodeTypes="blueimpnt:carouselImageItem,blueimpnt:carouselVideoItem"/>
-</c:if>

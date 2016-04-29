@@ -18,8 +18,6 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
-<a href="${currentNode.properties.picture.node.url}" title="${currentNode.displayableName}">
-    <c:if test="${currentNode.properties.picture.hasThumbnails}">
-        <img src="${currentNode.properties.node.thumbnailsUrl}" alt="${currentNode.displayableName}">
-    </c:if>
+<a href="<c:url value='${currentNode.properties.picture.node.url}' context='/'/>" title="${currentNode.displayableName}" data-gallery>
+    <img src="<c:url value='${currentNode.properties.picture.node.thumbnailUrls.thumbnail}' context='/'/>" alt="${currentNode.displayableName}">
 </a>
