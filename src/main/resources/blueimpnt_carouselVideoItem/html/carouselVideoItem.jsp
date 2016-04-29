@@ -32,7 +32,7 @@
 </c:if>
 
 <a href="${videoUrl}" title="${currentNode.displayableName}" type="${mainType}"
-   data-poster="${posterUrl}" data-sources="${fn:escapeXml(dataSources)}">
+   data-poster="${posterUrl}" data-sources="${fn:escapeXml(dataSources)}" data-gallery>
     <c:choose>
         <c:when test="${not empty currentNode.properties.poster}">
             <img src="${posterUrl}" alt="${currentNode.displayableName}">

@@ -36,7 +36,7 @@
 <c:set var="dataSources">${dataSources}]</c:set>
 
 <a href="${videoUrl}" title="${currentNode.displayableName}" type="text/html"
-   data-sources="${fn:escapeXml(dataSources)}" data-${origin}="${videoID}">
+   data-sources="${fn:escapeXml(dataSources)}" data-${origin}="${videoID}" data-gallery>
     <c:choose>
         <c:when test="${not empty currentNode.properties.poster}">
             <img src="${posterUrl}" alt="${currentNode.displayableName}">
