@@ -6,7 +6,7 @@ It's using a javascript library from [blueimp/Gallery](https://github.com/blueim
 You can use, fork this module.
  
 ### MINIMAL REQUIREMENTS
-* Digital Experience Manager 7.1.1.0
+* Digital Experience Manager 7.1.0.0
 
 ### PROVIDED LANGUAGES
 * English
