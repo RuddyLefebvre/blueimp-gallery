@@ -56,13 +56,15 @@
     </parent>
     <artifactId>blueimp-gallery</artifactId>
     <name>Blueimp Gallery</name>
-    <version>1.0-SNAPSHOT</version>    
+    <version>1.0</version>
     <packaging>bundle</packaging>
     <description>This is the custom module (Blueimp Gallery) for running on a Digital Factory server.</description>
 
     <scm>
-        <connection>scm:dummy:uri</connection>
-        <developerConnection>scm:dummy:uri</developerConnection>
+        <connection>scm:git:git@github.com:DameniMilo/blueimp-gallery.git</connection>
+        <developerConnection>scm:git:git@github.com:DameniMilo/blueimp-gallery.git</developerConnection>
+        <url>https://github.com/DameniMilo/blueimp-gallery</url>
+        <tag>v1.0</tag>
     </scm>
 
     <repositories>
