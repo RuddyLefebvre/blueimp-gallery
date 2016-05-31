@@ -22,10 +22,10 @@
 
 <c:choose>
     <c:when test="${currentNode.properties.allowSubDirectories.boolean}">
-        <c:set value="${jcr:getDescendantNodes(sourceFolder, 'jmix:image')}" var="sourceChild"/>WHEN
+        <c:set value="${jcr:getDescendantNodes(sourceFolder, 'jmix:image')}" var="sourceChild"/>
     </c:when>
     <c:otherwise>
-        <c:set value="${jcr:getChildrenOfType(sourceFolder, 'jmix:image')}" var="sourceChild"/>OTHERWISE
+        <c:set value="${jcr:getChildrenOfType(sourceFolder, 'jmix:image')}" var="sourceChild"/>
     </c:otherwise>
 </c:choose>
 
