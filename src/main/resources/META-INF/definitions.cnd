@@ -32,3 +32,4 @@
 
 [blueimpnt:carouselImageFromFolder] > jnt:content
  - source (weakreference, picker[type='folder']) mandatory internationalized < 'jnt:folder'
+ - allowSubDirectories (boolean)

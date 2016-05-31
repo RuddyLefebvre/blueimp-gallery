@@ -20,8 +20,19 @@
 
 <c:set value="${currentNode.properties.source.node}" var="sourceFolder"/>
 
-<c:forEach items="${jcr:getDescendantNodes(sourceFolder, 'jmix:image')}" var="image">
-    <a href="<c:url value='${image.url}' context='/'/>" title="${image.displayableName}" data-gallery>
-        <img src="<c:url value='${image.thumbnailUrls.thumbnail}' context='/'/>" alt="${image.displayableName}">
+<c:choose>
+    <c:when test="${currentNode.properties.allowSubDirectories.boolean}">
+        <c:set value="${jcr:getDescendantNodes(sourceFolder, 'jmix:image')}" var="sourceChild"/>WHEN
+    </c:when>
+    <c:otherwise>
+        <c:set value="${jcr:getChildrenOfType(sourceFolder, 'jmix:image')}" var="sourceChild"/>OTHERWISE
+    </c:otherwise>
+</c:choose>
+
+<c:forEach items="${sourceChild}" var="imageChild">
+    <a href="<c:url value='${imageChild.url}' context='/'/>" title="${imageChild.displayableName}" data-gallery>
+        <c:if test="${fn:length(imageChild.thumbnails) ne 0}">
+            <img src="<c:url value='${imageChild.thumbnailUrls.thumbnail}' context='/'/>" alt="${imageChild.displayableName}">
+        </c:if>
     </a>
 </c:forEach>
