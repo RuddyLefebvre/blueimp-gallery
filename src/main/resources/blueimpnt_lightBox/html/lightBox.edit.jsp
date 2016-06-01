@@ -19,7 +19,7 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <template:include view="hidden.header"/>
 
-<fmt:message key="blueimpnt_carousel.edit.addCarouselContent"/>
+<fmt:message key="blueimpnt_lightBox.edit.addLightBoxContent"/>
 <template:module path="*" nodeTypes="blueimpnt:carouselImageItem blueimpnt:carouselVideoItem blueimpnt:carouselOnlineVideoItem blueimpnt:carouselImageFromFolder"/>
 
 <c:if test="${not empty moduleMap.currentList}">
@@ -37,8 +37,15 @@
         </script>
     </template:addResources>
 
+    <c:if test="${fn:length(jcr:getChildrenOfType(currentNode, 'blueimpnt:carouselImageFromFolder')) ne 0}">
+        <div style="background-color: #d9edf7;color: #31708f;padding: 15px;margin-bottom: 20px;border: 1px solid transparent;border-radius: 4px;">
+            <strong><fmt:message key="blueimpnt_lightBox.edit.title.information"/></strong>
+            <p><fmt:message key="blueimpnt_lightBox.edit.title.informationAboutImagesFromFolder"/></p>
+        </div>
+    </c:if>
+
     <button type="button" class="button-placeholder" onclick="toggleEditCollapse${fn:replace(currentNode.identifier, '-', '')}()">
-        <fmt:message key="blueimpnt_carousel.edit.editCarouselContent"/>
+        <fmt:message key="blueimpnt_lightBox.edit.editLightBoxContent"/>
     </button>
 
     <div id="collaspeList_${currentNode.identifier}" style="display: none">

@@ -37,6 +37,13 @@
         </script>
     </template:addResources>
 
+    <c:if test="${fn:length(jcr:getChildrenOfType(currentNode, 'blueimpnt:carouselImageFromFolder')) ne 0}">
+        <div style="background-color: #d9edf7;color: #31708f;padding: 15px;margin-bottom: 20px;border: 1px solid transparent;border-radius: 4px;">
+            <strong><fmt:message key="blueimpnt_carousel.edit.title.information"/></strong>
+            <p><fmt:message key="blueimpnt_carousel.edit.title.informationAboutImagesFromFolder"/></p>
+        </div>
+    </c:if>
+
     <button type="button" class="button-placeholder" onclick="toggleEditCollapse${fn:replace(currentNode.identifier, '-', '')}()">
         <fmt:message key="blueimpnt_carousel.edit.editCarouselContent"/>
     </button>
