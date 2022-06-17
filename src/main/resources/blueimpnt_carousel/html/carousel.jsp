@@ -66,3 +66,9 @@
         <template:module node="${child}" editable="true"/>
     </c:forEach>
 </div>
+
+<jcr:nodeProperty name="type" node="${currentNode}" var="type" />
+<jcr:nodeProperty name="jcr:uuid" node="${currentNode}" var="uuid" />
+
+type = ${type}<br />
+uuid = ${uuid}
