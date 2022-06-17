@@ -57,7 +57,7 @@
     <groupId>ch.bger</groupId>
     <artifactId>blueimp-gallery</artifactId>
     <name>Blueimp Gallery</name>
-    <version>1.4</version>
+    <version>1.5-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <description>This is the custom module (Blueimp Gallery) for running on a Digital Factory server.</description>
 
